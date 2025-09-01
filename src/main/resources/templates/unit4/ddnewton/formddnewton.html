@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario DD Newton</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>Método de Diferencias Divididas de Newton</h2>
+
+<form th:action="@{/ddnewton/solve}" th:object="${ddnewton}" method="post">
+    Grado del Polinomio: <input type="number" th:field="*{gradoPolinomio}" required/><br>
+    Valor a Evaluar: <input type="number" step="any" th:field="*{valorAInterpolar}" required/><br>
+
+    X0: <input type="number" step="any" th:field="*{puntosX[0]}"/>
+    Y0: <input type="number" step="any" th:field="*{valoresY[0]}"/> <br>
+
+    X1: <input type="number" step="any" th:field="*{puntosX[1]}"/>
+    Y1: <input type="number" step="any" th:field="*{valoresY[1]}"/> <br>
+
+    <button type="submit">Calcular</button>
+</form>
+</body>
+</html>

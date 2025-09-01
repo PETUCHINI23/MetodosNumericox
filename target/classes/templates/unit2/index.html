@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+        <title>METODOS NUMERICOS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity=""
+            crossorigin="anonymous"
+            >
+        <!-- Bootstrap JS and dependencies -->
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="" 
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <nav th:replace="/layout/template :: menu"></nav> 
+        <div th:replace="/layout/template :: bannerunit2"></div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Solucion Ecuaciones</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="container">
+            <h1 class="text">Solucion de Ecuaciones Algebraicas</h1>
+            <p>
+                La solución de ecuaciones algebraicas consiste en encontrar los valores de la variable o 
+                variables que satisfacen una ecuación dada. En muchos casos, estas ecuaciones no pueden resolverse 
+                de manera exacta con métodos analíticos, por lo que se emplean <strong>métodos numéricos</strong> 
+                que permiten obtener aproximaciones cada vez más precisas.
+            </p>
+            <br>
+            <p>
+                En esta unidad veremos los principales <strong>métodos numéricos para la solución de ecuaciones algebraicas</strong>. 
+                Analizaremos tanto los <em>métodos cerrados</em>, que requieren un intervalo inicial y garantizan convergencia bajo ciertas condiciones, 
+                como los <em>métodos abiertos</em>, que emplean aproximaciones iniciales y suelen converger más rápido, aunque con mayor riesgo de divergencia. 
+                Al finalizar, el estudiante será capaz de aplicar cada técnica en problemas reales y comparar su eficiencia y precisión.
+            </p>
+
+
+            <ul class="nav flex-column">
+                <h4 class="text">Metodos Cerrados</h4>
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formbisection">Biseccion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formreglafalsa">Regla falsa</a>
+                </li>
+
+                <h4 class="text">Metodos Abiertos</h4>
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formpuntofijo">Punto Fijo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formnewtonraphson">Newton Raphson</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formsecante">Secante</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/unit2/formsecantemodificado">Secante Modificado</a>
+                </li> 
+            </ul>
+        </div>
+
+
+
+
+
+    </body>
+</html>

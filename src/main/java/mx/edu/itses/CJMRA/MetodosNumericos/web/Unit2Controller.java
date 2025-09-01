@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 import mx.edu.itses.CJMRA.MetodosNumericos.domain.Biseccion;
 import mx.edu.itses.CJMRA.MetodosNumericos.domain.NewtonRaphson;
+import mx.edu.itses.CJMRA.MetodosNumericos.domain.PuntoFijo;
 import mx.edu.itses.CJMRA.MetodosNumericos.domain.ReglaFalsa;
+import mx.edu.itses.CJMRA.MetodosNumericos.domain.Secante;
+import mx.edu.itses.CJMRA.MetodosNumericos.domain.SecanteModificado;
 import mx.edu.itses.CJMRA.MetodosNumericos.services.UnidadIIService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +24,15 @@ public class Unit2Controller {
     private UnidadIIService bisectionService;
     @Autowired
     private UnidadIIService reglafalsaService;
+     @Autowired
+    private UnidadIIService puntofijoservice;
     @Autowired
     private UnidadIIService newtonraphsonService;
-
+    @Autowired
+    private UnidadIIService secanteservice;
+   @Autowired
+    private UnidadIIService secantemodificadoservice;
+   
     @GetMapping("unit2/formbisection")
     public String formBisection(Model model) {
 
@@ -60,6 +69,26 @@ public class Unit2Controller {
         model.addAttribute("solveReglaFalsa", solveReglaFalsa);
         return "unit2/reglafalsa/solveReglaFalsa";
     }
+    
+     @GetMapping("unit2/formpuntofijo")
+    public String formPuntoFijo(Model model) {
+
+        PuntoFijo puntofijo = new PuntoFijo();
+
+        model.addAttribute("puntofijo", puntofijo);
+
+        return "unit2/puntofijo/formpuntofijo";
+    }
+
+    @PostMapping("unit2/solvepuntofijo")
+    public String solvepuntofijo(PuntoFijo puntofijo, Model model) {
+        var solvePuntoFijo = puntofijoservice.AlgoritmoPuntoFijo(puntofijo);
+
+        log.info("Arreglo " + solvePuntoFijo);
+        model.addAttribute("solvePuntoFijo", solvePuntoFijo);
+        return "unit2/puntofijo/solvepuntofijo";
+    }
+
 
 // NewtonRapson
     @GetMapping("unit2/formNewtonRaphson")
@@ -77,4 +106,45 @@ public class Unit2Controller {
         model.addAttribute("solveNewtonRaphson", solveNewtonRaphson);
         return "unit2/newtonraphson/solveNewRaphson";
     }
+    
+     @GetMapping("unit2/formsecante")
+    public String formSecante(Model model) {
+
+        Secante secante = new Secante();
+
+        model.addAttribute("secante", secante);
+
+        return "unit2/secante/formsecante";
+    }
+
+    @PostMapping("unit2/solvesecante")
+    public String solveSecante(Secante secante, Model model) {
+        var solveSecante = secanteservice.AlgoritmoSecante(secante);
+
+        log.info("Arreglo " + solveSecante);
+        model.addAttribute("solveSecante", solveSecante);
+        return "unit2/secante/solvesecante";
+    }
+    
+    
+    // Secante modificado
+    @GetMapping("unit2/formsecantemodificado")
+    public String formSecanteModificado(Model model) {
+
+        SecanteModificado secanteM = new SecanteModificado();
+
+        model.addAttribute("secantemodificado", secanteM);
+
+        return "unit2/secantemodificado/formsecantemodificado";
+    }
+
+    @PostMapping("unit2/solvesecantemodificado")
+    public String solveSecanteModificado(SecanteModificado secanteM, Model model) {
+        var solveSecanteModificado = secantemodificadoservice.AlgoritmoSecanteModificado(secanteM);
+
+        log.info("Arreglo " + solveSecanteModificado);
+        model.addAttribute("solveSecanteModificado", solveSecanteModificado);
+        return "unit2/secantemodificado/solvesecantemodificado";
+    }
+
 }

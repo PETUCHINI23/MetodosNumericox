@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultado DD Newton</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>Resultado Método DD Newton</h2>
+
+<p>Grado del Polinomio: <span th:text="${ddnewton.gradoPolinomio}"></span></p>
+<p>Valor a Evaluar = <span th:text="${ddnewton.valorAInterpolar}"></span></p>
+<p>Resultado de Interpolación = <span th:text="${ddnewton.resultadoInterpolacion}"></span></p>
+
+<h3>Coeficientes:</h3>
+<ul>
+    <li th:each="c : ${ddnewton.coeficientesNewton}" th:text="${c}"></li>
+</ul>
+
+<h3>Tabla de Diferencias Divididas:</h3>
+<ul>
+    <li th:each="t : ${ddnewton.tablaDD}" th:text="${t}"></li>
+</ul>
+
+</body>
+</html>
